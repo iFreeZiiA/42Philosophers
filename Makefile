@@ -6,7 +6,7 @@
 #    By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 15:12:46 by alearroy          #+#    #+#              #
-#    Updated: 2025/07/16 16:58:09 by alearroy         ###   ########.fr        #
+#    Updated: 2025/07/17 16:46:06 by alearroy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,14 @@ PRINT	= echo
 WAIT1	= sleep 1
 WAIT0.3	= sleep 0.3
 ERASE	= printf "\033[2K\r"
+MAN = mandatory/
+PAR = $(MAN)parsing/
 
 ################################################################################
 ##                              SOURCES AND OBJECTS                           ##
 ################################################################################
 
-SRC	= 
+SRC	= $(MAN)main.c $(PAR)lib.c $(PAR)parsing.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -82,7 +84,6 @@ clean :
 	@$(PRINT) -n ".";$(WAIT0.3)
 	@$(PRINT) -n ".";$(WAIT1);$(ERASE)
 	@$(RM) $(OBJ) $(BONUS_OB)
-	@make clean -s -C
 	@$(PRINT) "$(COLOUR_GREEN)\r  ✓  $(COLOUR_RED)Removed objects $(COLOUR_END)"
 
 fclean: clean
@@ -91,7 +92,6 @@ fclean: clean
 	@$(PRINT) -n ".";$(WAIT0.3)
 	@$(PRINT) -n ".";$(WAIT1);$(ERASE)
 	@$(RM) $(NAME) $(NAME_B)
-	@make fclean -s -C
 	@$(PRINT) "$(COLOUR_GREEN)\r  ✓  $(COLOUR_RED)Removed  $(NAME) $(COLOUR_END)\n"
 
 re :
