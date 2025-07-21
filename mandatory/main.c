@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:58:56 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/17 16:59:00 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:54:08 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 int main(int argc, char **argv)
 {
-	t_params params;
+	t_params	params;
+	t_data		data;
+	int			i;
 
 	if(!ft_checkarg(argc, argv, &params))
 		return(EXIT_FAILURE);
-	printf("Philos: %d, Die: %d, Eat: %d, Sleep: %d, Meals: %d\n",
-		params.nb_philos, params.time_to_die, params.time_to_eat,
-		params.time_to_sleep, params.nb_must_eat);
+	if(!init_data(&data, &params))
+		return(EXIT_FAILURE);
+	printf("Fourchettes (mutex) : %p ...\n", (void *)data.forks);
+	printf("Philosophes :\n");
+	i = 0;
+	while (i < data.params.nb_philos)
+	{
+		printf("Philo %d : left %p, right %p\n",
+			data.philos[i].id,
+			(void *)data.philos[i].left_fork,
+			(void *)data.philos[i].right_fork);
+		i++;
+	}
 	return(0);
 }

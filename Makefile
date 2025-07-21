@@ -6,7 +6,7 @@
 #    By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 15:12:46 by alearroy          #+#    #+#              #
-#    Updated: 2025/07/17 16:46:06 by alearroy         ###   ########.fr        #
+#    Updated: 2025/07/21 14:54:44 by alearroy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ PAR = $(MAN)parsing/
 ##                              SOURCES AND OBJECTS                           ##
 ################################################################################
 
-SRC	= $(MAN)main.c $(PAR)lib.c $(PAR)parsing.c
+SRC	= $(MAN)main.c $(PAR)lib.c $(PAR)parsing.c $(PAR)init.c
 
 OBJ = $(SRC:.c=.o)
 

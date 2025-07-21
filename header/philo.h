@@ -10,5 +10,6 @@
 int	is_number(const char *str);
 int	ft_atoi(const char *str);
 int	ft_checkarg(int argc, char** argv, t_params *params);
+int	init_data(t_data *data, t_params *params);
 
 #endif
