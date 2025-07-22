@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:58:56 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/21 14:54:08 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:30:16 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int main(int argc, char **argv)
 			(void *)data.philos[i].right_fork);
 		i++;
 	}
+	if (!philo_thread(&data))
+		return (EXIT_FAILURE);
 	return(0);
 }

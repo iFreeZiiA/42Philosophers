@@ -6,7 +6,7 @@
 #    By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 15:12:46 by alearroy          #+#    #+#              #
-#    Updated: 2025/07/21 14:54:44 by alearroy         ###   ########.fr        #
+#    Updated: 2025/07/22 16:53:48 by alearroy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,14 @@ WAIT0.3	= sleep 0.3
 ERASE	= printf "\033[2K\r"
 MAN = mandatory/
 PAR = $(MAN)parsing/
+PHI = $(MAN)philo/
 
 ################################################################################
 ##                              SOURCES AND OBJECTS                           ##
 ################################################################################
 
-SRC	= $(MAN)main.c $(PAR)lib.c $(PAR)parsing.c $(PAR)init.c
+SRC	= $(MAN)main.c $(PAR)lib.c $(PAR)parsing.c $(PAR)init.c $(PHI)routine.c		\
+$(PHI)thread.c
 
 OBJ = $(SRC:.c=.o)
 
