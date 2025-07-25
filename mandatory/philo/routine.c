@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:02:48 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/22 16:51:26 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:44:26 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void *philo_routine(void *arg)
 		printf("%ld %d has taken a fork\n", get_time_in_ms(), philo->id);
 		printf("%ld %d has taken a fork\n", get_time_in_ms(), philo->id);
 		printf("%ld %d is eating\n", get_time_in_ms(), philo->id);
+		pthread_mutex_lock(&philo->data->print_mutex);
 		philo->last_meal = get_time_in_ms();
+		pthread_mutex_unlock(&philo->data->print_mutex);
 		philo_sleep(philo->data->params.time_to_eat);
 		philo->meals_eaten++;
 		pthread_mutex_unlock(philo->left_fork);
