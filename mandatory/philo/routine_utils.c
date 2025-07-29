@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:41:21 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/29 17:19:23 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/29 17:59:54 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ long	get_time_in_ms(void)
 		return (-1);
 	ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	return (ms);
+}
+
+long	get_time_since_start(t_data *data)
+{
+	long	now;
+
+	now = get_time_in_ms();
+	return (now - data->start_time);
 }
 
 void	philo_sleep(int ms)
@@ -39,7 +47,7 @@ void	print_action(t_philo *philo, char *str)
 	pthread_mutex_lock(&philo->data->print_mutex);
 	if (!philo->data->stop_simulation)
 	{
-		time = get_time_in_ms();
+		time = get_time_since_start(philo->data);
 		printf("%ld %d %s\n", time, philo->id, str);
 	}
 	pthread_mutex_unlock(&philo->data->print_mutex);

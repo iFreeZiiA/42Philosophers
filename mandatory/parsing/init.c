@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:16:12 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/28 18:27:39 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/29 17:58:32 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	init_data(t_data *data, t_params *params)
 {
 	data->params = *params;
 	data->stop_simulation = 0;
+	data->start_time = get_time_in_ms();
 	if (!init_forks(data))
 		return (0);
 	if (!init_philos(data))

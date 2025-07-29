@@ -17,5 +17,6 @@ long	get_time_in_ms(void);
 void	philo_sleep(int ms);
 void	*monitor_death(void *arg);
 void	print_action(t_philo *philo, char *str);
+long	get_time_since_start(t_data *data);
 
 #endif
