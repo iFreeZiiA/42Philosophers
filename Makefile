@@ -6,7 +6,7 @@
 #    By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 15:12:46 by alearroy          #+#    #+#              #
-#    Updated: 2025/07/22 16:53:48 by alearroy         ###   ########.fr        #
+#    Updated: 2025/07/28 17:47:55 by alearroy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ PHI = $(MAN)philo/
 ################################################################################
 
 SRC	= $(MAN)main.c $(PAR)lib.c $(PAR)parsing.c $(PAR)init.c $(PHI)routine.c		\
-$(PHI)thread.c
+$(PHI)thread.c $(PHI)monitor.c $(PHI)routine_utils.c
 
 OBJ = $(SRC:.c=.o)
 

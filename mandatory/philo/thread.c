@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:17:14 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/22 16:30:02 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:29:10 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int philo_thread(t_data *data)
 {
 	int	i;
+	pthread_t	monitor;
 
 	i = 0;
 	while (i < data->params.nb_philos)
@@ -26,6 +27,12 @@ int philo_thread(t_data *data)
 		}
 		i++;
 	}
+	if (pthread_create(&monitor, NULL, monitor_death, &data))
+	{
+		printf("Erreur création thread superviseur\n");
+		return (EXIT_FAILURE);
+	}
+	pthread_join(monitor, NULL);
 	i = 0;
 	while (i < data->params.nb_philos)
 	{

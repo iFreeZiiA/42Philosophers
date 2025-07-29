@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:16:12 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/21 14:53:18 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/28 18:27:39 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ static int	init_philos(t_data *data)
 	int	i;
 
 	data->philos = malloc(sizeof(t_philo) * data->params.nb_philos);
-	if (!data->params.nb_philos)
-		return(0);
+	if (!data->philos)
+		return (0);
 	i = 0;
 	while (i < data->params.nb_philos)
 	{
 		data->philos[i].id = i + 1;
 		data->philos[i].meals_eaten = 0;
-		data->philos[i].last_meal = 0;
+		data->philos[i].last_meal = get_time_in_ms();
 		data->philos[i].left_fork = &data->forks[i];
 		data->philos[i].right_fork = &data->forks[(i + 1) % data->params.nb_philos];
 		data->philos[i].data = data;
