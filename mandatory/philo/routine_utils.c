@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:41:21 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/29 17:59:54 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/31 17:41:44 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ long	get_time_since_start(t_data *data)
 	return (now - data->start_time);
 }
 
-void	philo_sleep(int ms)
+void	philo_sleep(t_philo *philo, int ms)
 {
 	long	start;
 
 	start = get_time_in_ms();
-	while (get_time_in_ms() - start < ms)
+	while (!philo->data->stop_simulation && get_time_in_ms() - start < ms)
 		usleep(100);
 }
 

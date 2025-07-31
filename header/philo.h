@@ -14,7 +14,7 @@ int		init_data(t_data *data, t_params *params);
 void	*philo_routine(void *arg);
 int		philo_thread(t_data *data);
 long	get_time_in_ms(void);
-void	philo_sleep(int ms);
+void	philo_sleep(t_philo *philo, int ms);
 void	*monitor_death(void *arg);
 void	print_action(t_philo *philo, char *str);
 long	get_time_since_start(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:02:48 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/28 18:32:47 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/07/31 17:53:40 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,36 @@
 
 static void	philo_eat(t_philo *philo)
 {
-	pthread_mutex_lock(philo->left_fork);
-	print_action(philo, "has taken a fork");
-	if (philo->data->stop_simulation)
+	if (philo->id % 2 == 0)
 	{
-		pthread_mutex_unlock(philo->left_fork);
-		return ;
+		pthread_mutex_lock(philo->right_fork);
+		print_action(philo, "has taken a fork");
+		pthread_mutex_lock(philo->left_fork);
+		print_action(philo, "has taken a fork");
 	}
-	pthread_mutex_lock(philo->right_fork);
-	print_action(philo, "has taken a fork");
-	if (philo->data->stop_simulation)
+	else
 	{
-		pthread_mutex_unlock(philo->right_fork);
-		pthread_mutex_unlock(philo->left_fork);
-		return ;
+		pthread_mutex_lock(philo->left_fork);
+		print_action(philo, "has taken a fork");
+		pthread_mutex_lock(philo->right_fork);
+		print_action(philo, "has taken a fork");
 	}
 	print_action(philo, "is eating");
 	pthread_mutex_lock(&philo->data->print_mutex);
 	philo->last_meal = get_time_in_ms();
 	pthread_mutex_unlock(&philo->data->print_mutex);
-	philo_sleep(philo->data->params.time_to_eat);
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
+	}
 	philo->meals_eaten++;
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
+/* 	philo_sleep(philo, philo->data->params.time_to_eat); */
 }
 
 static void	philo_sleep_and_think(t_philo *philo)
@@ -44,7 +51,7 @@ static void	philo_sleep_and_think(t_philo *philo)
 	if (philo->data->stop_simulation)
 		return ;
 	print_action(philo, "is sleeping");
-	philo_sleep(philo->data->params.time_to_sleep);
+	philo_sleep(philo, philo->data->params.time_to_sleep);
 	if (philo->data->stop_simulation)
 		return ;
 	print_action(philo, "is thinking");
