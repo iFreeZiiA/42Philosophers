@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:41:21 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/31 17:41:44 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/03 15:49:09 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_action(t_philo *philo, char *str)
 	if (!philo->data->stop_simulation)
 	{
 		time = get_time_since_start(philo->data);
-		printf("%ld %d %s\n", time, philo->id, str);
+		printf("%ld %d %s \n", time, philo->id, str);
 	}
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }

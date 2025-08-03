@@ -6,7 +6,7 @@
 #    By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 15:12:46 by alearroy          #+#    #+#              #
-#    Updated: 2025/07/28 17:47:55 by alearroy         ###   ########.fr        #
+#    Updated: 2025/08/03 15:57:01 by alearroy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME	= philosophers
 CC 		= cc
-FLAGS 	= -Wall -Wextra -Werror 
+FLAGS 	= -Wall -Wextra -Werror
 RM 		= rm -f
 PRINT	= echo
 WAIT1	= sleep 1

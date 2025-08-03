@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:02:48 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/31 17:53:40 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/03 15:52:25 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@ static void	philo_eat(t_philo *philo)
 	{
 		pthread_mutex_lock(philo->right_fork);
 		print_action(philo, "has taken a fork");
+		printf("Philo %d : right %p\n", philo->id, philo->right_fork);
 		pthread_mutex_lock(philo->left_fork);
 		print_action(philo, "has taken a fork");
+		printf("Philo %d : left %p\n", philo->id, philo->left_fork);
 	}
 	else
 	{
 		pthread_mutex_lock(philo->left_fork);
 		print_action(philo, "has taken a fork");
+		printf("Philo %d : left %p\n", philo->id, philo->left_fork);
 		pthread_mutex_lock(philo->right_fork);
 		print_action(philo, "has taken a fork");
+		printf("Philo %d : right %p\n", philo->id, philo->right_fork);
 	}
 	print_action(philo, "is eating");
 	pthread_mutex_lock(&philo->data->print_mutex);
@@ -43,7 +47,7 @@ static void	philo_eat(t_philo *philo)
 		pthread_mutex_unlock(philo->left_fork);
 	}
 	philo->meals_eaten++;
-/* 	philo_sleep(philo, philo->data->params.time_to_eat); */
+	philo_sleep(philo, philo->data->params.time_to_eat);
 }
 
 static void	philo_sleep_and_think(t_philo *philo)
