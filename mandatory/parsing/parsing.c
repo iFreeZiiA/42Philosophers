@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 19:11:44 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/21 14:09:38 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:21:20 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_checkarg(int argc, char** argv, t_params *params)
 		params->nb_must_eat = ft_atoi(argv[5]);
 	else
 		params->nb_must_eat = -1;
-	if (params->nb_philos < 2 || params->time_to_die <= 0
+	if (params->nb_philos < 1 || params->time_to_die <= 0
 		|| params->time_to_eat <= 0 || params->time_to_sleep <= 0
 		|| (argc == 6 && params->nb_must_eat <= 0))
 		return (fprintf(stderr, "Error: invalid argument value\n"), 0);

@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 18:13:35 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/03 16:19:58 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:40:11 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*monitor_death(void *arg)
 		while (i < data->params.nb_philos)
 		{
 			pthread_mutex_lock(&data->print_mutex);
-			if (get_time_in_ms() - data->philos[i].last_meal > data->params.time_to_die)
+			if (get_time_since_start(data) - data->philos[i].last_meal > data->params.time_to_die)
 			{
 				data->stop_simulation = 1;
 				pthread_mutex_unlock(&data->print_mutex);
