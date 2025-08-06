@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 14:16:12 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/04 14:44:48 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:31:12 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	init_philos(t_data *data)
 	{
 		data->philos[i].id = i + 1;
 		data->philos[i].meals_eaten = 0;
-		data->philos[i].last_meal = get_time_in_ms();
+		data->philos[i].last_meal = get_time_in_ms() - data->start_time;
 		data->philos[i].left_fork = &data->forks[i];
 		data->philos[i].right_fork = &data->forks[(i + 1) % data->params.nb_philos];
 		data->philos[i].data = data;
@@ -55,6 +55,7 @@ int	init_data(t_data *data, t_params *params)
 	data->params = *params;
 	data->stop_simulation = 0;
 	data->start_time = get_time_in_ms();
+	pthread_mutex_init(&data->stop_mutex, NULL);
 	if (!init_forks(data))
 		return (0);
 	if (!init_philos(data))

@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:17:14 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/04 15:18:14 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:51:04 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,13 @@ int philo_thread(t_data *data)
 		pthread_join(data->philos[i].thread, NULL);
 		i++;
 	}
+	i = 0;
+	while (i < data->params.nb_philos)
+	{
+		pthread_mutex_destroy(&data->forks[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&data->print_mutex);
+	pthread_mutex_destroy(&data->stop_mutex);
 	return (1);
 }

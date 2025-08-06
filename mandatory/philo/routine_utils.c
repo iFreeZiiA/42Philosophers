@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 17:41:21 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/03 15:49:09 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:37:01 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_action(t_philo *philo, char *str)
 	long	time;
 
 	pthread_mutex_lock(&philo->data->print_mutex);
-	if (!philo->data->stop_simulation)
+	if (!philo->data->stop_simulation || !ft_strcmp(str, "died"))
 	{
 		time = get_time_since_start(philo->data);
 		printf("%ld %d %s \n", time, philo->id, str);

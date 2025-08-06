@@ -8,6 +8,7 @@
 # include "struct.h"
 
 int		is_number(const char *str);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_atoi(const char *str);
 int		ft_checkarg(int argc, char** argv, t_params *params);
 int		init_data(t_data *data, t_params *params);
@@ -18,5 +19,6 @@ void	philo_sleep(t_philo *philo, int ms);
 void	*monitor_death(void *arg);
 void	print_action(t_philo *philo, char *str);
 long	get_time_since_start(t_data *data);
+int		get_stop_simulation(t_data *data);
 
 #endif

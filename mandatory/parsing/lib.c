@@ -6,11 +6,26 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 14:39:53 by alearroy          #+#    #+#             */
-/*   Updated: 2025/07/17 15:52:42 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:38:46 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/philo.h"
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	unsigned char	*tab_s1;
+	unsigned char	*tab_s2;
+
+	tab_s1 = (unsigned char *) s1;
+	tab_s2 = (unsigned char *) s2;
+	while ((*tab_s1 && *tab_s2) && (*tab_s1 == *tab_s2))
+	{
+		tab_s1++;
+		tab_s2++;
+	}
+	return ((char) *tab_s1 - (char) *tab_s2);
+}
 
 static int	ft_isdigit(int n)
 {

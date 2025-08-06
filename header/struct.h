@@ -26,6 +26,7 @@ typedef struct s_data
 	int             stop_simulation;    // flag pour arrêter la simu (mort/philos pleins)
 	pthread_mutex_t print_mutex;        // mutex pour l’affichage
 	pthread_mutex_t *forks;             // tableau de mutex fourchettes
+	pthread_mutex_t stop_mutex;         // proteger la synchro des thread avec le stop_simulation
 	struct s_philo  *philos;            // tableau de philosophes
 }   t_data;
 
