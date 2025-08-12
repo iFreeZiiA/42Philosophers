@@ -6,33 +6,29 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:58:56 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/06 15:41:10 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:38:24 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/philo.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_params	params;
 	t_data		data;
-	/* int			i; */
 
-	if(!ft_checkarg(argc, argv, &params))
-		return(EXIT_FAILURE);
-	if(!init_data(&data, &params))
-		return(EXIT_FAILURE);
-/* 	printf("Philosophes :\n");
-	i = 0;
-	while (i < data.params.nb_philos)
-	{
-		printf("Philo %d : left %p, right %p\n",
-			data.philos[i].id,
-			(void *)data.philos[i].left_fork,
-			(void *)data.philos[i].right_fork);
-		i++;
-	} */
-	if (!philo_thread(&data))
+	if (!ft_checkarg(argc, argv, &params))
 		return (EXIT_FAILURE);
-	return(0);
+	if (!init_data(&data, &params))
+	{
+		cleanup_data(&data);
+		return (EXIT_FAILURE);
+	}
+	if (!philo_thread(&data))
+	{
+		cleanup_data(&data);
+		return (EXIT_FAILURE);
+	}
+	cleanup_data(&data);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 15:12:46 by alearroy          #+#    #+#              #
-#    Updated: 2025/08/03 15:57:01 by alearroy         ###   ########.fr        #
+#    Updated: 2025/08/12 16:18:51 by alearroy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ head :
 	@$(PRINT) "$(COLOUR_MAGENTA)| |   | | | | | | (_) |"
 	@$(PRINT) "$(COLOUR_MAGENTA)\_|   |_| |_|_|_|\___/ "
 	@$(PRINT) "$(COLOUR_TURQUOISE)42MLG: by alearroy \n"
-	@$(PRINT) "Project: \033[36m Push_swap $(COLOUR_TURQUOISE)"
+	@$(PRINT) "Project: \033[36m Philosophers $(COLOUR_TURQUOISE)"
 	@$(PRINT) "Commands:\033[36m all clean fclean re $(COLOUR_END)\n"
 
 $(NAME):	$(OBJ)

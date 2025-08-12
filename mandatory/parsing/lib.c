@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 14:39:53 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/06 15:38:46 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:35:58 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ static int	ft_isdigit(int n)
 	return (0);
 }
 
-int  is_number(const char *str)
+int	is_number(const char *str)
 {
+	int	i;
+
 	if (!str || !*str)
 		return (0);
-	int i = 0;
+	i = 0;
 	if (str[0] == '+')
 		i++;
 	while (str[i])
