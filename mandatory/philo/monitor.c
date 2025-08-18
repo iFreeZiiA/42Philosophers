@@ -6,11 +6,18 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 18:13:35 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/12 16:38:46 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/18 17:37:06 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/philo.h"
+
+void	set_stop_simulation(t_data *data)
+{
+	pthread_mutex_lock(&data->stop_mutex);
+	data->stop_simulation = 1;
+	pthread_mutex_unlock(&data->stop_mutex);
+}
 
 void	print_action(t_philo *philo, char *str)
 {
@@ -37,11 +44,7 @@ static int	check_all_finished(t_data *data)
 	result = (data->params.nb_must_eat > 0
 			&& data->finished_philos >= data->params.nb_philos);
 	if (result)
-	{
-		pthread_mutex_lock(&data->stop_mutex);
-		data->stop_simulation = 1;
-		pthread_mutex_unlock(&data->stop_mutex);
-	}
+		set_stop_simulation(data);
 	pthread_mutex_unlock(&data->finish_mutex);
 	return (result);
 }
@@ -57,9 +60,7 @@ static int	check_philosopher_death(t_data *data, int i)
 	pthread_mutex_unlock(&data->meal_mutex);
 	if (is_dead)
 	{
-		pthread_mutex_lock(&data->stop_mutex);
-		data->stop_simulation = 1;
-		pthread_mutex_unlock(&data->stop_mutex);
+		set_stop_simulation(data);
 		pthread_mutex_lock(&data->print_mutex);
 		printf("%ld %d died\n", now, data->philos[i].id);
 		pthread_mutex_unlock(&data->print_mutex);
@@ -74,12 +75,12 @@ void	*monitor_death(void *arg)
 	int		i;
 
 	data = (t_data *)arg;
-	while (!data->stop_simulation)
+	while (!get_stop_simulation(data))
 	{
 		if (check_all_finished(data))
 			return (NULL);
 		i = 0;
-		while (i < data->params.nb_philos && !data->stop_simulation)
+		while (i < data->params.nb_philos && !get_stop_simulation(data))
 		{
 			if (check_philosopher_death(data, i))
 				return (NULL);

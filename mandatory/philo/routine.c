@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:02:48 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/12 16:24:39 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/18 17:37:06 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ static void	philo_eat(t_philo *philo)
 
 static void	philo_sleep_and_think(t_philo *philo)
 {
-	if (philo->data->stop_simulation)
+	if (get_stop_simulation(philo->data))
 		return ;
 	print_action(philo, "is sleeping");
 	philo_sleep(philo, philo->data->params.time_to_sleep);
-	if (philo->data->stop_simulation)
+	if (get_stop_simulation(philo->data))
 		return ;
 	print_action(philo, "is thinking");
 }

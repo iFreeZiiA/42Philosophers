@@ -6,13 +6,13 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:17:14 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/12 16:15:37 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/18 17:37:06 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/philo.h"
 
-static void	join_and_cleanup(t_data *data)
+static void	join_threads(t_data *data)
 {
 	int	i;
 
@@ -22,16 +22,6 @@ static void	join_and_cleanup(t_data *data)
 		pthread_join(data->philos[i].thread, NULL);
 		i++;
 	}
-	i = 0;
-	while (i < data->params.nb_philos)
-	{
-		pthread_mutex_destroy(&data->forks[i]);
-		i++;
-	}
-	pthread_mutex_destroy(&data->print_mutex);
-	pthread_mutex_destroy(&data->stop_mutex);
-	pthread_mutex_destroy(&data->finish_mutex);
-	pthread_mutex_destroy(&data->meal_mutex);
 }
 
 int	philo_thread(t_data *data)
@@ -56,6 +46,6 @@ int	philo_thread(t_data *data)
 		return (0);
 	}
 	pthread_join(monitor, NULL);
-	join_and_cleanup(data);
+	join_threads(data);
 	return (1);
 }

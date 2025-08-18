@@ -6,7 +6,7 @@
 /*   By: alearroy <alearroy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 16:00:00 by alearroy          #+#    #+#             */
-/*   Updated: 2025/08/12 16:38:48 by alearroy         ###   ########.fr       */
+/*   Updated: 2025/08/18 17:37:06 by alearroy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	*monitor_death(void *arg);
 void	print_action(t_philo *philo, char *str);
 long	get_time_since_start(t_data *data);
 int		get_stop_simulation(t_data *data);
+void	set_stop_simulation(t_data *data);
 void	*handle_one_philo(t_philo *philo);
 
 #endif
